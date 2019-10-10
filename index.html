@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Usuarios</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+	.dinamic-fixed-active {
+		position: fixed;
+		z-index: 300;
+		width: 200px;
+		height: 70px;
+		margin-left: 35%;
+		border-radius: 40px;
+		margin-top: 10px;
+		opacity: 0.6;
+	}
+  </style>
+</head>
+<body onscroll="myFunction()">
+	
+	<div class="container container-fluid mt-5 mb-5">
+		<div class="mb-2 dinamic-fixed" id="dinamic-fixed">
+			<button type="button" class="btn btn-primary">Nuevo Usuario</button>
+		</div>
+		
+		<button id="auxbutton" type="button" class="btn btn-primary dinamic-fixed-active">Nuevo Usuario</button>
+		
+		<div class="card border-primary mb-3">
+			<div class="card-header">Usuarios</div>
+			<div class="card-body text-primary">
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Apellido</th>
+								<th>Edad</th>
+								<th>Estado</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Jose</td>
+								<td>Granda</td>
+								<td>36</td>
+								<td><span class="badge badge-success">Activo</span></td>
+							</tr>
+							
+							<tr>
+								<td>Diana</td>
+								<td>Guzñay</td>
+								<td>26</td>
+								<td><span class="badge badge-success">Activo</span></td>
+							</tr>
+							
+							<tr>
+								<td>Fernando</td>
+								<td>Vargas</td>
+								<td>42</td>
+								<td><span class="badge badge-danger">Inactivo</span></td>
+							</tr>
+							
+							<tr>
+								<td>Jorge</td>
+								<td>Caiza</td>
+								<td>18</td>
+								<td><span class="badge badge-success">Activo</span></td>
+							</tr>
+							
+							<tr>
+								<td>Juan</td>
+								<td>Calderón</td>
+								<td>38</td>
+								<td><span class="badge badge-danger">Inactivo</span></td>
+							</tr>
+							
+							<tr>
+								<td>Ana</td>
+								<td>Salazar</td>
+								<td>28</td>
+								<td><span class="badge badge-danger">Inactivo</span></td>
+							</tr>
+							
+							<tr>
+								<td>Silvia</td>
+								<td>Restrepo</td>
+								<td>27</td>
+								<td><span class="badge badge-success">Activo</span></td>
+							</tr>
+							
+							<tr>
+								<td>Gloria</td>
+								<td>Vera</td>
+								<td>65</td>
+								<td><span class="badge badge-success">Activo</span></td>
+							</tr>
+							
+							<tr>
+								<td>Carlos</td>
+								<td>Toaquiza</td>
+								<td>19</td>
+								<td><span class="badge badge-success">Activo</span></td>
+							</tr>
+							
+							<tr>
+								<td>María</td>
+								<td>Salazar</td>
+								<td>23</td>
+								<td><span class="badge badge-success">Activo</span></td>
+							</tr>
+							
+							<tr>
+								<td>Fernando</td>
+								<td>Gómez</td>
+								<td>28</td>
+								<td><span class="badge badge-danger">Inactivo</span></td>
+							</tr>
+							
+							<tr>
+								<td>Sofía</td>
+								<td>Aldaz</td>
+								<td>35</td>
+								<td><span class="badge badge-success">Activo</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	
+		document.getElementById('auxbutton').style.display = 'none';
+		function isElementTotallyVisible(elto) {
+			var anchoViewport = window.innerWidth || document.documentElement.clientWidth;
+			var alturaViewport = window.innerHeight || document.documentElement.clientHeight;
+			//Posición de la caja del elemento
+			var caja = elto.getBoundingClientRect();
+			return ( caja.top >= 0 && 
+					caja.bottom <= alturaViewport &&
+					caja.left >= 0 &&
+					caja.right <= anchoViewport );
+		}
+	
+		function myFunction() {
+			var elements = document.getElementsByClassName('dinamic-fixed')
+			if (!isElementPartiallyVisible(elements.item(0))) {
+				document.getElementsByClassName('dinamic-fixed-active').item(0).style.display = 'block';
+			} else {
+				document.getElementsByClassName('dinamic-fixed-active').item(0).style.display = 'none';
+			}
+		}
+		
+		
+
+		function isElementPartiallyVisible(elto) {
+			var anchoViewport = window.innerWidth || document.documentElement.clientWidth;
+			var alturaViewport = window.innerHeight || document.documentElement.clientHeight;
+			//Posición de la caja del elemento
+			var caja = elto.getBoundingClientRect();
+			var cajaDentroH = (caja.left >= 0 && caja.left <= anchoViewport) ||
+							(caja.right >= 0 && caja.right <= anchoViewport);
+			var cajaDentroV = (caja.top >= 0 && caja.top <= alturaViewport) ||  
+							(caja.bottom>= 0 && caja.bottom <= alturaViewport);  
+			return (cajaDentroH && cajaDentroV);
+		}
+	</script>
+	
+</body>
+</html>
